@@ -1,8 +1,6 @@
 import type { Point, Line, Lines, PointMap } from '../../type'
-import type { Plugin } from 'vite'
 import { Directions } from '../../type'
 import { CannyJS } from './canny'
-// import fetch from 'node-fetch'
 import getPixels from 'get-pixels'
 import images from 'images'
 
@@ -115,7 +113,7 @@ const getDirection = ([x1, y1]: Point, [x2, y2]: Point) => {
 }
 
 const createPolyLines = (lines: Lines) => {
-  return lines.map(line => `<polyline style='--offset:${line.length}' points='${line.map(point => point.join(',')).join(' ')}' fill='none' ></polyline>`).join('')
+  return lines.map(line => `<polyline style="--offset:${line.length}" points="${line.map(point => point.join(",")).join(" ")}" fill="none" ></polyline>`).join("")
 }
 
 const getPolyLines: (imgData: number[], w: number, h: number) => string = compose(
@@ -124,53 +122,22 @@ const getPolyLines: (imgData: number[], w: number, h: number) => string = compos
   createPolyLines
 )
 
-export default function (): Plugin {
-  const createAttrReg = (attr: string) => new RegExp(attr + '=(\'|")([^\'"]+)(\\1)', 'g')
-  const reg = /<active-img-(draw|bgColor|placeholder)([^>]+)/g
-  const includeReg = /\.(png|gif|[jpeg]jpg|webp)($|\?)/
-  const activeModeReg = /([^?]+)\?activeMode=([^'"?]+)/g
-  const pathReg = /('|")([^'"]+)(\?activeMode)/g
-  const cacheMap = new Map<string, string>()
+export default async function (params) {
+  const max = 1e3;
+  const img = images(params.filePath);
+  const scaleImg = img.size(Math.min(img.width(), max));
+  const buffer = scaleImg.encode('jpg')
+  const { data, shape: [width, height] } = await new Promise<{data: number[], shape: [number, number]}>(r => {
+    getPixels(buffer, 'image/jpg', (err, pix) => {
+      r(pix)
+    })
+  })
+  const canny = CannyJS.canny({ width, height, data }, 80, 10, 1.4, 3);
+  const content = getPolyLines(canny.toImageDataArray(), width, height);
 
   return {
-    name: 'active-img:draw',
-    // enforce: 'pre',
-    async transform(code, id) {
-      if (cacheMap.has(id)) return cacheMap.get(id)
-      if (!includeReg.test(id)) return code
-
-      const [[, filePath, mode] = []] = Array.from(id.matchAll(activeModeReg))
-
-      if (mode !== 'draw') return code
-
-      const max = 10000;
-      console.time('img')
-      const img = images(filePath);
-      console.timeLog('img')
-      const scaleImg = img.size(Math.min(img.width(), max));
-      console.timeLog('img')
-      const buffer = scaleImg.encode('jpg')
-      console.timeLog('img')
-      const { data, shape: [width, height] } = await new Promise<{data: number[], shape: [number, number]}>(r => {
-        getPixels(buffer, 'image/jpg', (err, pix) => {
-          r(pix)
-        })
-      })
-      console.timeEnd('img')
-      const canny = CannyJS.canny({ width, height, data }, 80, 10, 1.4, 3);
-      const content = getPolyLines(canny.toImageDataArray(), width, height);
-      const [match] = Array.from(code.matchAll(pathReg));
-      cacheMap.set(id, `
-      import src from '${match[2]}'
-      // const src = '${match[2].slice(0, match[2].length - 2)}'
-      export default JSON.stringify({
-        src,
-        width: ${width},
-        height: ${height},
-        content: "${content}",
-      })`)
-
-      return cacheMap.get(id)
-    }
+    content,
+    width,
+    height
   }
 }

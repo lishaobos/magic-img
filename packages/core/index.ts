@@ -1,5 +1,3 @@
-import { install as installDraw } from './src/draw'
+import { install } from './src/magic'
 
-export default function install() {
-  installDraw()
-}
+export default install

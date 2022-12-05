@@ -1,5 +1,5 @@
 {
-  "name": "active-img",
+  "name": "magic-img",
   "version": "0.0.1",
   "description": "",
   "main": "./dist/index.cjs",
@@ -20,12 +20,12 @@
       "require": "./dist/vite.cjs",
       "import": "./dist/vite.mjs"
     },
-    "./css": "./dist/draw.css"
+    "./css": "./dist/magic.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@active-img/vite": "workspace:0.0.1"
+    "@magic-img/vite": "workspace:^0.0.1"
   }
 }

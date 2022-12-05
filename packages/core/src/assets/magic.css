@@ -9,7 +9,7 @@
   opacity: 1;
   transition: opacity 1s;
 }
-.active-draw-svg {
+.active-draw-svg, .active-draw-small {
   position: absolute;
   width: inherit;
   height: inherit;
@@ -17,7 +17,7 @@
 .active-draw-svg polyline {
   stroke-dasharray: var(--offset);
   stroke-dashoffset: var(--offset);
-  stroke: black;
+  stroke: blue;
   transition: stroke-dashoffset 4s;
 }
 .active-draw-svg-active polyline {

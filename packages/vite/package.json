@@ -1,5 +1,5 @@
 {
-  "name": "@active-img/vite",
+  "name": "@magic-img/vite",
   "version": "0.0.1",
   "description": "",
   "main": "./dist/index.cjs",
@@ -24,6 +24,10 @@
   },
   "dependencies": {
     "get-pixels": "^3.3.3",
-    "images": "^3.2.4"
+    "images": "^3.2.4",
+    "jimp": "^0.16.2",
+    "lqip": "^2.1.0",
+    "potrace": "^2.1.8",
+    "sqip": "^0.3.3"
   }
 }
