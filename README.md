@@ -12,9 +12,9 @@
   - Cucoloris - 以剪影为过渡，可自定义颜色，背景色
   - Draw - 以动态画笔为过渡，可自定义画笔颜色
 - 支持 - bmp，jpg，jpeg，png（。。。待扩充）
-- [自定义过渡](#options)
+- [自定义过渡](#自定义过渡)
 - 集成
-  - Vite
+  - [Vite](#options)
 
 ## 安装
 
@@ -102,3 +102,45 @@ export default {
 import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 
+## 自定义过渡
+
+根据不同状态你可以自定义过渡效果
+
+#### migic-img dom 结构
+
+```html
+<magic-img>
+  <!-- 占位元素，可能是 img，svg -->
+  <placeholder class='magic-placeholder' />
+  <!-- 最终展示图片 -->
+  <target class='magic-target' />
+</magic-img>
+```
+
+#### 过渡状态
+
+- default - 你可以默认一些样式
+- from - 当元素出现在视窗内，此时也会加载真正的图片
+  placeholder，target 会被设置属性 status=from
+- to - 真正的图片加载完毕
+  placeholder，target 会被设置属性 status=to
+
+#### 例子
+
+```html
+<magic-img src='xxx' class='my-style'>
+```
+
+```css
+.my-style .magic-placeholder {
+  filter: blur(10px)
+}
+.my-style .magic-target[status=from] {
+  border: 1px solid;
+}
+.my-style .magic-target[status=to] {
+  opacity: 1;
+  filter: grayscale(1);
+  transition: all 4s;
+}
+```

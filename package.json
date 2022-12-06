@@ -6,6 +6,7 @@
   "scripts": {
     "eslint": "eslint .",
     "rm-dist": "rimraf **/dist",
+    "rm-all": "rimraf **/node_modules **/dist",
     "build": "pnpm -r build",
     "stub": "pnpm -r --filter=./packages/* --parallel run stub"
   },
