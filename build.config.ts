@@ -3,10 +3,15 @@ import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig({
   failOnWarn: false,
   entries: [
-    './index',
+    {
+      builder: 'mkdist',
+      input: './src/assets',
+      outDir: './dist'
+    },
+    './src/index',
   ],
-  declaration: true,
   externals: ['vite'],
+  declaration: true,
   rollup: {
     emitCJS: true
   }

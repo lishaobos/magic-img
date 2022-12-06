@@ -1,9 +1,9 @@
 import type { Plugin } from 'vite'
 import type { Options } from './type'
-import draw from './src/draw'
-import cucoloris from './src/cucoloris'
-import lqip from './src/lqip'
-import sqip from './src/sqip'
+import draw from './draw'
+import cucoloris from './cucoloris'
+import lqip from './lqip'
+import sqip from './sqip'
 
 export default function (options: Options): Plugin {
   const cacheMap = new Map<string, string>()

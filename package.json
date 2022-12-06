@@ -4,11 +4,20 @@
   "description": "让你的图片加载更加优雅",
   "main": "index.js",
   "scripts": {
+    "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
     "eslint": "eslint .",
     "rm-dist": "rimraf **/dist",
     "rm-all": "rimraf **/node_modules **/dist",
-    "build": "pnpm -r build",
+    "build": "unbuild",
     "stub": "pnpm -r --filter=./packages/* --parallel run stub"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./css": "./dist/magic.css"
   },
   "keywords": [],
   "author": "lishaobos",
@@ -18,10 +27,17 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "eslint": "^8.28.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4"
   },
   "dependencies": {
+    "get-pixels": "^3.3.3",
+    "images": "^3.2.4",
+    "jimp": "^0.16.2",
+    "lqip": "^2.1.0",
+    "potrace": "^2.1.8",
     "rimraf": "^3.0.2",
+    "sqip": "^0.3.3",
     "unbuild": "^1.0.1"
   }
 }

@@ -1,5 +1,5 @@
-import type { Point, Line, Lines, PointMap, DrawOptions } from '../../type'
-import { Directions } from '../../type'
+import type { Point, Line, Lines, PointMap, DrawOptions } from '../type'
+import { Directions } from '../type'
 import { CannyJS } from './canny'
 import getPixels from 'get-pixels'
 import images from 'images'
