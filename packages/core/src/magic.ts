@@ -82,7 +82,7 @@ export class MagicImg extends HTMLElement {
       if (performance.now() - start < 500) {
         return setTimeout(() => {
           this.img.classList.add('active-draw-img-active')
-        }, 1e3)
+        }, 500 - (performance.now() - start))
       }
       this.img.classList.add('active-draw-img-active')
     }

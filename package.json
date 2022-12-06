@@ -1,9 +1,10 @@
 {
   "name": "magic-img",
   "version": "0.0.1",
-  "description": "",
+  "description": "让你的图片加载更加优雅",
   "main": "index.js",
   "scripts": {
+    "eslint": "eslint .",
     "rm-dist": "rimraf **/dist",
     "build": "pnpm -r build",
     "stub": "pnpm -r --filter=./packages/* --parallel run stub"

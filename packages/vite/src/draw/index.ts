@@ -1,4 +1,4 @@
-import type { Point, Line, Lines, PointMap } from '../../type'
+import type { Point, Line, Lines, PointMap, DrawOptions } from '../../type'
 import { Directions } from '../../type'
 import { CannyJS } from './canny'
 import getPixels from 'get-pixels'
@@ -122,10 +122,9 @@ const getPolyLines: (imgData: number[], w: number, h: number) => string = compos
   createPolyLines
 )
 
-export default async function (params) {
-  const max = 1e3;
-  const img = images(params.filePath);
-  const scaleImg = img.size(Math.min(img.width(), max));
+export default async function (filePath: string, params: DrawOptions) {
+  const img = images(filePath);
+  const scaleImg = img.size(Math.min(img.width(), params.max || 400));
   const buffer = scaleImg.encode('jpg')
   const { data, shape: [width, height] } = await new Promise<{data: number[], shape: [number, number]}>(r => {
     getPixels(buffer, 'image/jpg', (err, pix) => {

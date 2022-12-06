@@ -267,7 +267,6 @@
         kernel[i][j] = (kernel[i][j] / sum).toFixed(3);
       }
     }
-    console.log("kernel", kernel);
     return kernel;
   };
 

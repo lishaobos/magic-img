@@ -1,19 +1,17 @@
 import sqip from 'sqip'
-
-type Params = {
-  filePath: string
-}
+import type { SqipOptions } from '../type'
 
 const detaultOptions = {
-  numberOfPrimitives: 50,
+  numberOfPrimitives: 20,
   blur: 2,
   mode: 0
 }
 
-export default async function (params: Params) {
+export default async function (filename: string, params: SqipOptions) {
   const { final_svg: svg, img_dimensions: data } = await sqip({
+    filename,
     ...detaultOptions,
-    filename: params.filePath
+    ...params
   });
 
   return {

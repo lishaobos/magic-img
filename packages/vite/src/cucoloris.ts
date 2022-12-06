@@ -1,9 +1,6 @@
 import potrace from 'potrace'
 import * as jimp from 'jimp'
-
-type Params = {
-  filePath: string
-}
+import type { CucolorisOptions } from '../type'
 
 const defaultOptions = {
   background: '#fff',
@@ -11,8 +8,8 @@ const defaultOptions = {
   threshold: 120
 }
 
-export default async function (params: Params) {
-  const data = await jimp.read(params.filePath)
+export default async function (filePath: string, params: CucolorisOptions) {
+  const data = await jimp.read(filePath)
   const trace = new potrace.Potrace()
   trace.setParameters({
     ...defaultOptions,

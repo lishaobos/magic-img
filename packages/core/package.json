@@ -4,7 +4,6 @@
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "type": "module",
   "scripts": {
     "build": "unbuild",
     "stub": "unbuild --stub"
