@@ -15,11 +15,11 @@ export class MagicImg extends HTMLElement {
 
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
     this.svg.setAttribute('preserveAspectRatio', 'none')
-    this.svg.classList.add('active-draw-svg')
     this.img = new Image()
-    this.img.classList.add('active-draw-img')
     this.smallImg = new Image()
-    this.smallImg.classList.add('active-draw-small')
+    this.svg.classList.add('magic-placeholder')
+    this.smallImg.classList.add('magic-placeholder')
+    this.img.classList.add('magic-target')
   }
 
   get data(): {
@@ -43,8 +43,6 @@ export class MagicImg extends HTMLElement {
 
     const { data } = this
     this.setAttribute('magic', data.magic)
-    this.style.display = 'inline-block'
-    this.style.position = 'relative'
     if (data.magic === 'lqip') {
       this.smallImg.src = data.content
       this.appendChild(this.smallImg)
@@ -71,20 +69,22 @@ export class MagicImg extends HTMLElement {
     if (isUrlChange) {
       this.svg.setAttribute('viewBox', `0 .width} ${data.height}`)
       this.svg.innerHTML = data.content
-      this.img.classList.remove('active-draw-img-active')
-      this.svg.classList.remove('active-draw-svg-active')
+      this.img.removeAttribute('status')
+      this.svg.removeAttribute('status')
       await wait()
     }
 
-    this.svg.classList.add('active-draw-svg-active')
+    this.svg.setAttribute('status', 'from')
+    this.smallImg.setAttribute('status', 'from')
+    this.img.setAttribute('status', 'from')
     const start = performance.now()
     this.img.onload = () => {
       if (performance.now() - start < 500) {
         return setTimeout(() => {
-          this.img.classList.add('active-draw-img-active')
+          this.img.setAttribute('status', 'to')
         }, 500 - (performance.now() - start))
       }
-      this.img.classList.add('active-draw-img-active')
+      this.img.setAttribute('status', 'to')
     }
     this.img.src = data.src
   }
