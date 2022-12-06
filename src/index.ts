@@ -1,7 +1,4 @@
 import { install } from './magic'
-import vite from './vite'
+import './assets/magic.css'
 
-export {
-  install,
-  vite
-}
+export default install

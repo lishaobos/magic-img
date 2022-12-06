@@ -2,22 +2,23 @@
   "name": "magic-img",
   "version": "0.0.1",
   "description": "让你的图片加载更加优雅",
-  "main": "index.js",
   "scripts": {
     "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
     "eslint": "eslint .",
-    "rm-dist": "rimraf **/dist",
-    "rm-all": "rimraf **/node_modules **/dist",
-    "build": "unbuild",
-    "stub": "pnpm -r --filter=./packages/* --parallel run stub"
+    "build": "tsup"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
-    "./css": "./dist/magic.css"
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "require": "./dist/vite.js",
+      "import": "./dist/vite.mjs"
+    },
+    "./css": "./dist/index.css"
   },
   "keywords": [],
   "author": "lishaobos",
@@ -36,8 +37,7 @@
     "jimp": "^0.16.2",
     "lqip": "^2.1.0",
     "potrace": "^2.1.8",
-    "rimraf": "^3.0.2",
     "sqip": "^0.3.3",
-    "unbuild": "^1.0.1"
+    "tsup": "^6.5.0"
   }
 }
