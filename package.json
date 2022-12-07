@@ -6,6 +6,7 @@
     "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
     "eslint": "eslint .",
     "build": "tsup",
+    "build:all": "tsup && pnpm build:example",
     "build:example": "pnpm -r --filter=./example build"
   },
   "exports": {

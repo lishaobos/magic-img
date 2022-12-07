@@ -43,7 +43,7 @@ jobs:
       - name: install
         run:  pnpm i
       - name: Build
-        run:  pnpm build:example
+        run:  pnpm build:all
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
