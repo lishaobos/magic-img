@@ -2,6 +2,12 @@
 
 让图片的加载更加优雅
 
+## [在线示例](https://lishaobos.github.io/magic-img)
+
+## 效果
+
+<img src='./magic-img.gif'>
+
 ## 特性
 
 - 无框架限制 - 基于 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)

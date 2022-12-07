@@ -72,7 +72,8 @@ function App() {
       <div className='header'>
         <a href="https://github.com/lishaobos/magic-img" target='_blank'>github</a>，
         <a href="https://juejin.cn/post/7122256732940107813" target='_blank'>掘金</a>，
-        <a href="https://www.npmjs.com/package/magic-img" target='_blank'>npm</a>
+        <a href="https://www.npmjs.com/package/magic-img" target='_blank'>npm</a>，
+        <a href="https://github.com/lishaobos/magic-img/tree/main/example" target='_blank'>示例代码</a>
       </div>
       {Array.from(imgMap.entries()).map(([key, list]) => {
         return (
