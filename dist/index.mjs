@@ -67,10 +67,10 @@ var MagicImg = class extends HTMLElement {
     this.img.setAttribute("status", "from");
     const start = performance.now();
     this.img.onload = () => {
-      if (performance.now() - start < 500) {
+      if (performance.now() - start < 1e3) {
         return setTimeout(() => {
           this.img.setAttribute("status", "to");
-        }, 500 - (performance.now() - start));
+        }, 1e3 - (performance.now() - start));
       }
       this.img.setAttribute("status", "to");
     };

@@ -28,6 +28,11 @@ enum Mode {
   polygon
 }
 
+export type LqipOptions = {
+  width: number,
+  height: number,
+}
+
 export type SqipOptions = {
   numberOfPrimitives: number
   blur: number

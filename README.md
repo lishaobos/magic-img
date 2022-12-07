@@ -11,7 +11,7 @@
   - Sqip - 以 svg 轮廓为过渡，可自定义轮廓，滤镜
   - Cucoloris - 以剪影为过渡，可自定义颜色，背景色
   - Draw - 以动态画笔为过渡，可自定义画笔颜色
-- 支持 - bmp，jpg，jpeg，png（。。。待扩充）
+- 支持 - jpg，jpeg，png，gif
 - [自定义过渡](#自定义过渡)
 - 集成
   - [Vite](#options)
@@ -55,6 +55,10 @@ export default {
 
 ## Options
 
+- lqip
+  - width - 缩略图宽度
+    (default: 20)
+  - height - 缩略图高度
 - sqip
   - numberOfPrimitives - 生成的轮廓数量
     (default: 20)
