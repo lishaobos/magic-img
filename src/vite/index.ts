@@ -5,7 +5,7 @@ import cucoloris from './cucoloris'
 import lqip from './lqip'
 import sqip from './sqip'
 
-export default function (options: Options): Plugin {
+export default function (options: Options = {}): Plugin {
   const cacheMap = new Map<string, string>()
   const includeReg = /\.(png|gif|jpeg|jpg|webp)($|\?)/
   const magicReg = /([^?]+)\?([^'"?]+)/g

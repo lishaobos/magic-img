@@ -80,19 +80,26 @@ export class MagicImg extends HTMLElement {
       await wait()
     }
 
-    this.svg.setAttribute('status', 'from')
-    this.smallImg.setAttribute('status', 'from')
-    this.img.setAttribute('status', 'from')
-    const start = performance.now()
-    this.img.onload = () => {
-      if (performance.now() - start < 1000) {
-        return setTimeout(() => {
+    requestAnimationFrame(() => {
+      this.svg.setAttribute('status', 'from')
+      this.smallImg.setAttribute('status', 'from')
+      this.img.setAttribute('status', 'from')
+      const start = performance.now()
+      this.img.onload = () => {
+        const to = () => requestAnimationFrame(() => {
+          this.svg.setAttribute('status', 'to')
+          this.smallImg.setAttribute('status', 'to')
           this.img.setAttribute('status', 'to')
-        }, 1000 - (performance.now() - start))
+        })
+
+        if (performance.now() - start < 600) {
+          return setTimeout(to, 600 - (performance.now() - start))
+        }
+
+        to()
       }
-      this.img.setAttribute('status', 'to')
-    }
-    this.img.src = data.src
+      this.img.src = data.src
+    })
   }
 
   static get observedAttributes() {

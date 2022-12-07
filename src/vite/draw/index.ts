@@ -1,7 +1,7 @@
 import type { Point, Line, Lines, PointMap, DrawOptions } from '../type'
 import { Directions } from '../type'
 import { CannyJS } from './canny'
-import * as jimp from 'jimp'
+import jimp from 'jimp'
 
 const directions = [
   Directions.Left,

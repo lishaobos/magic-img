@@ -66,19 +66,24 @@ var MagicImg = class extends HTMLElement {
       this.svg.removeAttribute("status");
       await wait();
     }
-    this.svg.setAttribute("status", "from");
-    this.smallImg.setAttribute("status", "from");
-    this.img.setAttribute("status", "from");
-    const start = performance.now();
-    this.img.onload = () => {
-      if (performance.now() - start < 1e3) {
-        return setTimeout(() => {
+    requestAnimationFrame(() => {
+      this.svg.setAttribute("status", "from");
+      this.smallImg.setAttribute("status", "from");
+      this.img.setAttribute("status", "from");
+      const start = performance.now();
+      this.img.onload = () => {
+        const to = () => requestAnimationFrame(() => {
+          this.svg.setAttribute("status", "to");
+          this.smallImg.setAttribute("status", "to");
           this.img.setAttribute("status", "to");
-        }, 1e3 - (performance.now() - start));
-      }
-      this.img.setAttribute("status", "to");
-    };
-    this.img.src = data.src;
+        });
+        if (performance.now() - start < 600) {
+          return setTimeout(to, 600 - (performance.now() - start));
+        }
+        to();
+      };
+      this.img.src = data.src;
+    });
   }
   static get observedAttributes() {
     return ["src"];

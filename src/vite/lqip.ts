@@ -1,4 +1,4 @@
-import * as jimp from 'jimp'
+import jimp from 'jimp'
 import type { LqipOptions } from './type'
 
 const mimeType = {

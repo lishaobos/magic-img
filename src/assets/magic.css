@@ -22,13 +22,19 @@ magic-img {
   stroke: black;
 }
 
-.magic-target[status=from] {
+.magic-placeholder[status=to] {
   opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
 }
 
 .magic-placeholder[status=from] polyline {
-  transition: stroke-dashoffset 4s;
+  transition: stroke-dashoffset 2s;
   stroke-dashoffset: 0;
+}
+
+.magic-target[status=from] {
+  opacity: 0;
 }
 
 .magic-target[status=to] {

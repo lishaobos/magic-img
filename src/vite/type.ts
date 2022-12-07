@@ -43,6 +43,8 @@ export type CucolorisOptions = {
   background: string
   color: string
   threshold: number
+  w: number,
+  h: number,
 }
 
 export type DrawOptions = {
@@ -51,7 +53,8 @@ export type DrawOptions = {
 }
 
 export type Options = {
-  sqip: SqipOptions
-  cucoloris: CucolorisOptions
-  draw: DrawOptions
+  lqip?: LqipOptions
+  sqip?: SqipOptions
+  cucoloris?: CucolorisOptions
+  draw?: DrawOptions
 }
