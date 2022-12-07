@@ -56,9 +56,9 @@ export default {
 ## Options
 
 - lqip
-  - width - 缩略图宽度
+  - w - 缩略图宽度
     (default: 20)
-  - height - 缩略图高度
+  - h - 缩略图高度
 - sqip
   - numberOfPrimitives - 生成的轮廓数量
     (default: 20)
@@ -75,8 +75,9 @@ export default {
   - threshold - 阈值
     (default: 120)
 - draw
-  - max - 图片缩放尺寸，提升转换速度
+  - w - 缩略图宽度
     (default: 400)
+  - h - 缩略图高度
 
 
 ## 自定义 Options

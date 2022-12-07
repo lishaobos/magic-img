@@ -1,6 +1,6 @@
 import potrace from 'potrace'
 import * as jimp from 'jimp'
-import type { CucolorisOptions } from '../type'
+import type { CucolorisOptions } from './type'
 
 const defaultOptions = {
   background: '#fff',

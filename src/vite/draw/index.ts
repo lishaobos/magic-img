@@ -1,8 +1,7 @@
 import type { Point, Line, Lines, PointMap, DrawOptions } from '../type'
 import { Directions } from '../type'
 import { CannyJS } from './canny'
-import getPixels from 'get-pixels'
-import images from 'images'
+import * as jimp from 'jimp'
 
 const directions = [
   Directions.Left,
@@ -123,20 +122,21 @@ const getPolyLines: (imgData: number[], w: number, h: number) => string = compos
 )
 
 export default async function (filePath: string, params: DrawOptions) {
-  const img = images(filePath);
-  const scaleImg = img.size(Math.min(img.width(), params.max || 400));
-  const buffer = scaleImg.encode('jpg')
-  const { data, shape: [width, height] } = await new Promise<{data: number[], shape: [number, number]}>(r => {
-    getPixels(buffer, 'image/jpg', (err, pix) => {
-      r(pix)
-    })
-  })
-  const canny = CannyJS.canny({ width, height, data }, 80, 10, 1.4, 3);
-  const content = getPolyLines(canny.toImageDataArray(), width, height);
+  const { w = 400, h = jimp.AUTO } = params
+  const img = await jimp.read(filePath)
+  const width = img.getWidth()
+  const height = img.getHeight()
+  const scaleImg = img.resize(+w, +h)
+  const width_ = scaleImg.getWidth()
+  const height_ = scaleImg.getHeight()
+  const canny = CannyJS.canny({ width: width_, height: height_, data: scaleImg.bitmap.data }, 80, 10, 1.4, 3);
+  const content = getPolyLines(canny.toImageDataArray(), width_, height_);
 
   return {
     content,
     width,
-    height
+    height,
+    width_,
+    height_
   }
 }

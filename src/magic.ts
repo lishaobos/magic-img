@@ -23,11 +23,13 @@ export class MagicImg extends HTMLElement {
   }
 
   get data(): {
-    magic?: string,
-    src?: string,
-    content?: string,
-    width?: string,
-    height?: string,
+    magic?: string
+    src?: string
+    content?: string
+    width?: string
+    height?: string
+    width_?: string
+    height_?: string
   } {
     try {
       return JSON.parse(this.getAttribute('src'))
@@ -45,9 +47,13 @@ export class MagicImg extends HTMLElement {
     this.setAttribute('magic', data.magic)
     if (data.magic === 'lqip') {
       this.smallImg.src = data.content
+      this.smallImg.setAttribute('width', data.width)
+      this.smallImg.setAttribute('height', data.height)
       this.appendChild(this.smallImg)
     } else {
-      this.svg.setAttribute('viewBox', `0 0 ${data.width} ${data.height}`)
+      this.svg.setAttribute('width', data.width)
+      this.svg.setAttribute('height', data.height)
+      this.svg.setAttribute('viewBox', `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`)
       this.svg.innerHTML = data.content
       this.appendChild(this.svg)
     }

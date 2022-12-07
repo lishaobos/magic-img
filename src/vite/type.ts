@@ -29,8 +29,8 @@ enum Mode {
 }
 
 export type LqipOptions = {
-  width: number,
-  height: number,
+  w: number,
+  h: number,
 }
 
 export type SqipOptions = {
@@ -46,7 +46,8 @@ export type CucolorisOptions = {
 }
 
 export type DrawOptions = {
-  max: number
+  w: number,
+  h: number,
 }
 
 export type Options = {

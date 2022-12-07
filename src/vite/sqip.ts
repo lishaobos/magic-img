@@ -1,5 +1,5 @@
 import sqip from 'sqip'
-import type { SqipOptions } from '../type'
+import type { SqipOptions } from './type'
 
 const detaultOptions = {
   numberOfPrimitives: 20,
