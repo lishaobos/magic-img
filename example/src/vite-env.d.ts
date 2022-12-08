@@ -1,8 +1,7 @@
 /// <reference types="vite/client" />
 
-declare  namespace JSX {
+declare namespace JSX {
   interface IntrinsicElements {
-    'magic-img': any
-    // 'active-img': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+    'magic-img': DetailedHTMLFactory<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
   }
 }
