@@ -2,7 +2,7 @@
 
 让图片的加载更加优雅
 
-## [在线示例](https://lishaobos.github.io/magic-img)
+## [在线示例](https://github.com/lishaobos/magic-img/blob/main/magic-img.gif?raw=true)
 
 ## 效果
 

@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "让你的图片加载更加优雅",
   "scripts": {
     "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
