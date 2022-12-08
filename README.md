@@ -2,11 +2,11 @@
 
 让图片的加载更加优雅
 
-## [在线示例](https://github.com/lishaobos/magic-img/blob/main/magic-img.gif?raw=true)
+## [在线示例](https://lishaobos.github.io/magic-img)
 
 ## 效果
 
-<img src='./magic-img.gif'>
+<img src='https://github.com/lishaobos/magic-img/blob/main/magic-img.gif?raw=true'>
 
 ## 特性
 

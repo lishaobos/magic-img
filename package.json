@@ -1,9 +1,8 @@
 {
   "name": "magic-img",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "让你的图片加载更加优雅",
   "scripts": {
-    "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
     "eslint": "eslint .",
     "build": "tsup",
     "build:all": "tsup && pnpm build:example",
