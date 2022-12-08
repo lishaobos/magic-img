@@ -9,6 +9,13 @@
     "build:all": "tsup && pnpm build:example",
     "build:example": "pnpm -r --filter=./example build"
   },
+  "files": [
+    "./dist",
+    "*.d.ts"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -22,7 +29,11 @@
     },
     "./css": "./dist/index.css"
   },
-  "keywords": [],
+  "keywords": [
+    "img",
+    "lazy",
+    "magic-img"
+  ],
   "author": "lishaobos",
   "license": "ISC",
   "devDependencies": {
