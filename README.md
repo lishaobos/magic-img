@@ -155,3 +155,51 @@ import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
   transition: all 4s;
 }
 ```
+
+## 注意
+
+在 vue 中，custom element 需要注册
+
+#### Vue2
+```js
+Vue.config.ignoredElements = [
+  'magic-img',
+]
+```
+
+#### Vue3 + Vite
+```js
+// vite.config.js
+import vue from '@vitejs/plugin-vue'
+
+export default {
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('magic-img')
+        }
+      }
+    })
+  ]
+}
+```
+
+#### Vue3 + Vue-cli
+```js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => ({
+        ...options,
+        compilerOptions: {
+          // treat any tag that starts with ion- as custom elements
+          isCustomElement: tag => tag.startsWith('magic-img')
+        }
+      }))
+  }
+}
+```

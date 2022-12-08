@@ -2,6 +2,11 @@
   "name": "magic-img",
   "version": "0.0.7",
   "description": "让你的图片加载更加优雅",
+  "homepage": "https://github.com/lishaobos/magic-img#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lishaobos/magic-img.git"
+  },
   "scripts": {
     "eslint": "eslint .",
     "build": "tsup",
