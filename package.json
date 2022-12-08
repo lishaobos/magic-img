@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "让你的图片加载更加优雅",
   "scripts": {
     "eslint": "eslint .",
@@ -10,8 +10,7 @@
   },
   "files": [
     "./dist",
-    "*.d.ts",
-    "magic-img.gif"
+    "*.d.ts"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
