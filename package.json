@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "让你的图片加载更加优雅",
   "scripts": {
     "go": "pnpm -r --filter=./packages/core --no-git-checks publish",
@@ -11,7 +11,8 @@
   },
   "files": [
     "./dist",
-    "*.d.ts"
+    "*.d.ts",
+    "magic-img.gif"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
