@@ -4,7 +4,12 @@
 
 ## [在线示例](https://lishaobos.github.io/magic-img)
 
-## 效果
+
+## Before
+
+<img src='https://github.com/lishaobos/magic-img/blob/main/before.gif?raw=true'>
+
+## After
 
 <img src='https://github.com/lishaobos/magic-img/blob/main/magic-img.gif?raw=true'>
 
