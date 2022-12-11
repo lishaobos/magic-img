@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "让你的图片加载更加优雅",
   "homepage": "https://github.com/lishaobos/magic-img#readme",
   "repository": {
@@ -53,7 +53,6 @@
     "lqip": "^2.1.0",
     "potrace": "^2.1.8",
     "sqip": "^0.3.3",
-    "tsup": "^6.5.0",
-    "webp-converter": "^2.3.3"
+    "tsup": "^6.5.0"
   }
 }
