@@ -208,3 +208,16 @@ module.exports = {
   }
 }
 ```
+
+#### Nuxt
+
+```js
+import 'magic-img/css';
+
+// 需要这样引入
+if (process.client) {
+  import('magic-img').then(({ default: install }) => {
+    install()
+  })
+}
+```
