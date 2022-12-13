@@ -74,7 +74,9 @@ export function install() {
     async start(isUrlChange = false) {
       const { data } = this
       if (isUrlChange) {
-        this.svg.setAttribute('viewBox', `0 .width} ${data.height}`)
+        this.svg.setAttribute('width', data.width)
+        this.svg.setAttribute('height', data.height)
+        this.svg.setAttribute('viewBox', `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`)
         this.svg.innerHTML = data.content
         this.img.removeAttribute('status')
         this.svg.removeAttribute('status')
