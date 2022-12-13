@@ -31,7 +31,7 @@ function install() {
     async connectedCallback() {
       this.initial = true;
       if (!this.getAttribute("src"))
-        throw new Error("\u9700\u8981 src");
+        throw new Error("<magic-img /> src attribute is required\uFF0Csee\uFF1Ahttps://github.com/lishaobos/magic-img#%E4%BD%BF%E7%94%A8");
       const { data } = this;
       this.setAttribute("magic", data.magic);
       if (data.magic === "lqip") {

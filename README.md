@@ -22,7 +22,7 @@
   - Sqip - 以 svg 轮廓为过渡，可自定义轮廓，滤镜
   - Cucoloris - 以剪影为过渡，可自定义颜色，背景色
   - Draw - 以动态画笔为过渡，可自定义画笔颜色
-- 支持 - jpg，jpeg，png，gif
+- 支持 - jpg，jpeg，png，gif，webp
 - [自定义过渡](#自定义过渡)
 - 集成
   - [Vite](#options)

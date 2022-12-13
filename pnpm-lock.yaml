@@ -15,12 +15,14 @@ importers:
       tsup: ^6.5.0
       typescript: ^4.9.3
       vite: ^3.2.4
+      webp-converter: ^2.3.3
     dependencies:
       jimp: 0.16.2
       lqip: 2.1.0
       potrace: 2.1.8
       sqip: 0.3.3
       tsup: 6.5.0_typescript@4.9.3
+      webp-converter: 2.3.3
     devDependencies:
       '@types/node': 18.11.11
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
@@ -34,7 +36,7 @@ importers:
       '@types/react': ^18.0.24
       '@types/react-dom': ^18.0.8
       '@vitejs/plugin-react': ^2.2.0
-      magic-img: workspace:0.0.2
+      magic-img: workspace:0.0.11
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.6.4
@@ -3484,6 +3486,11 @@ packages:
     hasBin: true
     dev: false
 
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
   /verror/1.10.0:
     resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
     engines: {'0': node >=0.6.0}
@@ -3562,6 +3569,12 @@ packages:
 
   /webidl-conversions/4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
+    dev: false
+
+  /webp-converter/2.3.3:
+    resolution: {integrity: sha512-2p4XvPCIQ/CbUztEFA9vdkILVrRTdMtMxFpQTxlnPc3qx14MV5wnpVvK7m6pG70QdeL+Ser0+Tp843ONwh8VbQ==}
+    dependencies:
+      uuid: 8.3.2
     dev: false
 
   /whatwg-url/7.1.0:
