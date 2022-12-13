@@ -42,7 +42,7 @@ export function install() {
   
     async connectedCallback() {
       this.initial = true
-      if (!this.getAttribute('src')) throw new Error('需要 src')
+      if (!this.getAttribute('src')) throw new Error('<magic-img /> src attribute is required，see：https://github.com/lishaobos/magic-img#%E4%BD%BF%E7%94%A8')
   
       const { data } = this
       this.setAttribute('magic', data.magic)
