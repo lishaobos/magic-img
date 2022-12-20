@@ -22,30 +22,18 @@ function install() {
     }
     get data() {
       try {
-        return JSON.parse(this.getAttribute("src"));
+        const src = this.getAttribute("src") || this.src;
+        return JSON.parse(src);
       } catch (e) {
-        console.log("\u53C2\u6570\u83B7\u53D6\u5931\u8D25", e);
+        console.log("src attribute error", e);
         return {};
       }
     }
     async connectedCallback() {
       this.initial = true;
-      if (!this.getAttribute("src"))
+      if (!this.getAttribute("src") && !this.src)
         throw new Error("<magic-img /> src attribute is required\uFF0Csee\uFF1Ahttps://github.com/lishaobos/magic-img#%E4%BD%BF%E7%94%A8");
-      const { data } = this;
-      this.setAttribute("magic", data.magic);
-      if (data.magic === "lqip") {
-        this.smallImg.src = data.content;
-        this.smallImg.setAttribute("width", data.width);
-        this.smallImg.setAttribute("height", data.height);
-        this.appendChild(this.smallImg);
-      } else {
-        this.svg.setAttribute("width", data.width);
-        this.svg.setAttribute("height", data.height);
-        this.svg.setAttribute("viewBox", `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`);
-        this.svg.innerHTML = data.content;
-        this.appendChild(this.svg);
-      }
+      this.setPlaceholder();
       this.appendChild(this.img);
       const intersection = new IntersectionObserver(async (entrys) => {
         for (const { isIntersecting } of entrys) {
@@ -58,17 +46,27 @@ function install() {
       });
       intersection.observe(this);
     }
-    async start(isUrlChange = false) {
+    setPlaceholder() {
       const { data } = this;
-      if (isUrlChange) {
+      this.setAttribute("magic", data.magic);
+      this.img.removeAttribute("status");
+      if (data.magic === "lqip") {
+        this.smallImg.src = data.content;
+        this.smallImg.setAttribute("width", data.width);
+        this.smallImg.setAttribute("height", data.height);
+        this.svg.parentNode?.removeChild(this.svg);
+        this.appendChild(this.smallImg);
+      } else {
         this.svg.setAttribute("width", data.width);
         this.svg.setAttribute("height", data.height);
         this.svg.setAttribute("viewBox", `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`);
         this.svg.innerHTML = data.content;
-        this.img.removeAttribute("status");
-        this.svg.removeAttribute("status");
-        await wait();
+        this.smallImg.parentNode?.removeChild(this.smallImg);
+        this.appendChild(this.svg);
       }
+    }
+    async start() {
+      const { data } = this;
       requestAnimationFrame(() => {
         this.svg.setAttribute("status", "from");
         this.smallImg.setAttribute("status", "from");
@@ -94,7 +92,9 @@ function install() {
     async attributeChangedCallback() {
       if (!this.initial)
         return;
-      await this.start(true);
+      this.setPlaceholder();
+      await wait();
+      await this.start();
     }
   }
   customElements.define("magic-img", MagicImg);
