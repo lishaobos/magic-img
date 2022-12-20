@@ -36,7 +36,7 @@ importers:
       '@types/react': ^18.0.24
       '@types/react-dom': ^18.0.8
       '@vitejs/plugin-react': ^2.2.0
-      magic-img: workspace:0.0.11
+      magic-img: workspace:0.0.13
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: ^4.6.4
