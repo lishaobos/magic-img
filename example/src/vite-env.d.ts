@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="magic-img/global" />
 
 declare namespace JSX {
   interface IntrinsicElements {
