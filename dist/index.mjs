@@ -1,6 +1,8 @@
 // src/magic.ts
 var wait = (time = 0) => new Promise((r) => setTimeout(r, time));
 function install() {
+  if (typeof HTMLElement === "undefined")
+    return;
   class MagicImg extends HTMLElement {
     initial = false;
     width = 0;
