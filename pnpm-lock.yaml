@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@types/node': ^18.11.9
+      '@types/react': ^18.0.24
       '@typescript-eslint/eslint-plugin': ^5.44.0
       '@typescript-eslint/parser': ^5.44.0
       eslint: ^8.28.0
@@ -25,6 +26,7 @@ importers:
       webp-converter: 2.3.3
     devDependencies:
       '@types/node': 18.11.11
+      '@types/react': 18.0.26
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
       '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
       eslint: 8.29.0
