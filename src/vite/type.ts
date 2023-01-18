@@ -30,7 +30,7 @@ enum Mode {
 
 export type LqipOptions = {
   w: number,
-  h: number,
+  h?: number,
 }
 
 export type SqipOptions = {
@@ -44,17 +44,17 @@ export type CucolorisOptions = {
   color: string
   threshold: number
   w: number,
-  h: number,
+  h?: number,
 }
 
 export type DrawOptions = {
   w: number,
-  h: number,
+  h?: number,
 }
 
-export type Options = {
-  lqip?: LqipOptions
-  sqip?: SqipOptions
-  cucoloris?: CucolorisOptions
-  draw?: DrawOptions
-}
+export type Options = Partial<{
+  lqip: LqipOptions
+  sqip: Partial<SqipOptions>
+  cucoloris: CucolorisOptions
+  draw: DrawOptions
+}>
