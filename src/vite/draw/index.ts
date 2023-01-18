@@ -98,18 +98,18 @@ const getLines = (pointMap: PointMap) => {
   return lines
 }
 
-const getDirection = ([x1, y1]: Point, [x2, y2]: Point) => {
-  const [x, y] = [x2 - x1, y2 - y1]
+// const getDirection = ([x1, y1]: Point, [x2, y2]: Point) => {
+//   const [x, y] = [x2 - x1, y2 - y1]
 
-  if (x > 0 && y > 0) return Directions.RightBottom
-  else if (x > 0 && y === 0) return Directions.Right
-  else if (x > 0 && y < 0) return Directions.TopRight
-  else if (x === 0 && y > 0) return Directions.Bottom
-  else if (x === 0 && y < 0) return Directions.Top
-  else if (x < 0 && y < 0) return Directions.LeftTop
-  else if (x < 0 && y === 0) return Directions.Left
-  else if (x < 0 && y > 0) return Directions.BottomLeft
-}
+//   if (x > 0 && y > 0) return Directions.RightBottom
+//   else if (x > 0 && y === 0) return Directions.Right
+//   else if (x > 0 && y < 0) return Directions.TopRight
+//   else if (x === 0 && y > 0) return Directions.Bottom
+//   else if (x === 0 && y < 0) return Directions.Top
+//   else if (x < 0 && y < 0) return Directions.LeftTop
+//   else if (x < 0 && y === 0) return Directions.Left
+//   else if (x < 0 && y > 0) return Directions.BottomLeft
+// }
 
 const createPolyLines = (lines: Lines) => {
   return lines.map(line => `<polyline style="--offset:${line.length}" points="${line.map(point => point.join(",")).join(" ")}" fill="none" ></polyline>`).join("")

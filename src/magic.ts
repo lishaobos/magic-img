@@ -1,7 +1,18 @@
 const wait = (time = 0) => new Promise((r) => setTimeout(r, time))
 
+export type Magic = {
+  initial: boolean
+  width: number
+  height: number
+  src: string
+  content: string
+  svg: SVGSVGElement
+  img: HTMLImageElement
+  smallImg: HTMLImageElement
+}
+
 export function install() {
-  class MagicImg extends HTMLElement {
+  class MagicImg extends HTMLElement implements Magic {
     initial = false
     width = 0
     height = 0

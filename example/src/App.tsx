@@ -1,5 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import './App.css'
 import img1 from './assets/1.jpg?magic=lqip'
 import img2 from './assets/2.jpg?magic=lqip'
@@ -81,7 +80,7 @@ function App() {
             <h2>{key.toUpperCase()}</h2>
             {list.map((src, index) => (
               <div key={key + index}>
-                <magic-img class={'magic'} src={src} />
+                <magic-img className={'magic'} src={src} />
               </div>
             ))}
           </div>

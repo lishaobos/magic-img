@@ -1,17 +1,14 @@
-import { install } from './magic'
-import type { DetailedHTMLProps, HTMLAttributes } from 'react'
-
-type MagicImg = ReturnType<typeof install>
+export { install as  default } from './magic'
+import type { Magic } from './magic'
+import type { DetailedHTMLProps, HTMLAttributes, } from 'react'
 
 declare global {
     interface HTMLElementTagNameMap {
-        "magic-img": MagicImg;
+        "magic-img": HTMLDivElement & Partial<Magic>
     }
     namespace JSX {
         interface IntrinsicElements {
-            "magic-img": DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<{
-                src: string
-            }>;
+            "magic-img": DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<Magic>;
         }
     }
 }
