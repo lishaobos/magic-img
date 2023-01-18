@@ -3,6 +3,8 @@
     "target": "esnext",
     "moduleResolution": "node",
     "module": "esnext",
-    "types": ["node"]
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve"
   }
 }

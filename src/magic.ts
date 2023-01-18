@@ -118,4 +118,5 @@ export function install() {
   }
   
   customElements.define('magic-img', MagicImg)
+  return MagicImg
 }
