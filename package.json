@@ -8,9 +8,10 @@
     "url": "git+https://github.com/lishaobos/magic-img.git"
   },
   "scripts": {
-    "eslint": "eslint .",
+    "prepare": "husky install",
+    "lint": "eslint . --fix --ignore-path .gitignore",
     "build": "tsup",
-    "build:all": "tsup && pnpm build:example",
+    "build:all": "pnpm build && pnpm build:example",
     "build:example": "pnpm -r --filter=./example build"
   },
   "files": [

@@ -4,98 +4,98 @@ import { CannyJS } from './canny'
 import jimp from 'jimp'
 
 const directions = [
-  Directions.Left,
-  Directions.LeftTop,
-  Directions.Top,
-  Directions.TopRight,
-  Directions.Right,
-  Directions.RightBottom,
-  Directions.Bottom,
-  Directions.BottomLeft,
+	Directions.Left,
+	Directions.LeftTop,
+	Directions.Top,
+	Directions.TopRight,
+	Directions.Right,
+	Directions.RightBottom,
+	Directions.Bottom,
+	Directions.BottomLeft,
 ]
 
 const compose = (...fncs: ((...args: any) => any)[]) => (...args: any[]) => fncs.reduce((p, n, i) => i ? n(p) : n(...p), args)
 
 const getPointByDirection = ([x, y]: Point, dirction: Directions): Point => {
-  switch (dirction) {
-    case Directions.Left:
-      return [x - 1, y]
-    case Directions.LeftTop:
-      return [x - 1, y - 1]
-    case Directions.Top:
-      return [x, y - 1]
-    case Directions.TopRight:
-      return [x + 1, y - 1]
-    case Directions.Right:
-      return [x + 1, y]
-    case Directions.RightBottom:
-      return [x + 1, y + 1]
-    case Directions.Bottom:
-      return [x, y + 1]
-    case Directions.BottomLeft:
-      return [x - 1, y + 1]
-  }
+	switch (dirction) {
+		case Directions.Left:
+			return [x - 1, y]
+		case Directions.LeftTop:
+			return [x - 1, y - 1]
+		case Directions.Top:
+			return [x, y - 1]
+		case Directions.TopRight:
+			return [x + 1, y - 1]
+		case Directions.Right:
+			return [x + 1, y]
+		case Directions.RightBottom:
+			return [x + 1, y + 1]
+		case Directions.Bottom:
+			return [x, y + 1]
+		case Directions.BottomLeft:
+			return [x - 1, y + 1]
+	}
 }
 
 const getPoints = (imgData: number[], w: number, h: number): PointMap => {
-  const pointMap: PointMap = new Map()
-  for (let y = h - 1; y >= 0; y--) {
-    for (let x = w - 1; x >= 0; x--) {
-      const i = x * 4 + y * w * 4
+	const pointMap: PointMap = new Map()
+	for (let y = h - 1; y >= 0; y--) {
+		for (let x = w - 1; x >= 0; x--) {
+			const i = x * 4 + y * w * 4
 
-      if (imgData[i] === 255) pointMap.set(`${x}-${y}`, [x, y])
-    }
-  }
+			if (imgData[i] === 255) pointMap.set(`${x}-${y}`, [x, y])
+		}
+	}
 
-  return pointMap
+	return pointMap
 }
 
 const getLines = (pointMap: PointMap) => {
-  const pointCache = new Map<string, true>()
-  const lines: Lines = []
-  const { random } = Math
-  for (const [x, y] of pointMap.values()) {
-    if (pointCache.has(`${x}-${y}`)) continue
+	const pointCache = new Map<string, true>()
+	const lines: Lines = []
+	const { random } = Math
+	for (const [x, y] of pointMap.values()) {
+		if (pointCache.has(`${x}-${y}`)) continue
 
-    directions.sort(() => random() - random())
-    const line: Line = []
-    let start: Point = [x, y]
-    line.push(start)
-    pointCache.set(`${x}-${y}`, true)
-    let i = 0
-    while (i < directions.length) {
-      const [x, y] = getPointByDirection(start, directions[i])
-      if (!pointMap.has(`${x}-${y}`) || pointCache.has(`${x}-${y}`)) {
-        i++
-        continue
-      }
+		directions.sort(() => random() - random())
+		const line: Line = []
+		let start: Point = [x, y]
+		line.push(start)
+		pointCache.set(`${x}-${y}`, true)
+		let i = 0
+		while (i < directions.length) {
+			const [x, y] = getPointByDirection(start, directions[i])
+			if (!pointMap.has(`${x}-${y}`) || pointCache.has(`${x}-${y}`)) {
+				i++
+				continue
+			}
       
-      line.push(start = [x, y])
-      pointCache.set(`${x}-${y}`, true)
-    }
+			line.push(start = [x, y])
+			pointCache.set(`${x}-${y}`, true)
+		}
 
-    if (line.length > 2) {
-      lines.push(line)
-      // const optimizedLine = new Set<Point>()
-      // line.reduce((p: Point | Directions, n, i, arr) => {
-      //   const dirction = getDirection(arr[i - 1], arr[i])
+		if (line.length > 2) {
+			lines.push(line)
+			// const optimizedLine = new Set<Point>()
+			// line.reduce((p: Point | Directions, n, i, arr) => {
+			//   const dirction = getDirection(arr[i - 1], arr[i])
 
-      //   if (i === 1) {
-      //     optimizedLine.add(arr[i - 1])
-      //   }
-      //   if (p as Directions !== dirction) {
-      //     optimizedLine.add(arr[i - 1])
-      //   }
+			//   if (i === 1) {
+			//     optimizedLine.add(arr[i - 1])
+			//   }
+			//   if (p as Directions !== dirction) {
+			//     optimizedLine.add(arr[i - 1])
+			//   }
 
-      //   return dirction
-      // })
+			//   return dirction
+			// })
        
-      // optimizedLine.add(line.at(-1) as Point)
-      // lines.push(Array.from(optimizedLine.values()))
-    }
-  }
+			// optimizedLine.add(line.at(-1) as Point)
+			// lines.push(Array.from(optimizedLine.values()))
+		}
+	}
 
-  return lines
+	return lines
 }
 
 // const getDirection = ([x1, y1]: Point, [x2, y2]: Point) => {
@@ -112,31 +112,31 @@ const getLines = (pointMap: PointMap) => {
 // }
 
 const createPolyLines = (lines: Lines) => {
-  return lines.map(line => `<polyline style="--offset:${line.length}" points="${line.map(point => point.join(",")).join(" ")}" fill="none" ></polyline>`).join("")
+	return lines.map(line => `<polyline style="--offset:${line.length}" points="${line.map(point => point.join(",")).join(" ")}" fill="none" ></polyline>`).join("")
 }
 
 const getPolyLines: (imgData: number[], w: number, h: number) => string = compose(
-  getPoints,
-  getLines,
-  createPolyLines
+	getPoints,
+	getLines,
+	createPolyLines
 )
 
 export default async function (filePath: string, params: DrawOptions) {
-  const { w = 400, h = jimp.AUTO } = params
-  const img = await jimp.read(filePath)
-  const width = img.getWidth()
-  const height = img.getHeight()
-  const scaleImg = img.resize(+w, +h)
-  const width_ = scaleImg.getWidth()
-  const height_ = scaleImg.getHeight()
-  const canny = CannyJS.canny({ width: width_, height: height_, data: scaleImg.bitmap.data }, 80, 10, 1.4, 3);
-  const content = getPolyLines(canny.toImageDataArray(), width_, height_);
+	const { w = 400, h = jimp.AUTO } = params
+	const img = await jimp.read(filePath)
+	const width = img.getWidth()
+	const height = img.getHeight()
+	const scaleImg = img.resize(+w, +h)
+	const width_ = scaleImg.getWidth()
+	const height_ = scaleImg.getHeight()
+	const canny = CannyJS.canny({ width: width_, height: height_, data: scaleImg.bitmap.data }, 80, 10, 1.4, 3)
+	const content = getPolyLines(canny.toImageDataArray(), width_, height_)
 
-  return {
-    content,
-    width,
-    height,
-    width_,
-    height_
-  }
+	return {
+		content,
+		width,
+		height,
+		width_,
+		height_
+	}
 }

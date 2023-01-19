@@ -1,4 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import './App.css'
 import img1 from './assets/1.jpg?magic=lqip'
 import img2 from './assets/2.jpg?magic=lqip'
@@ -26,69 +27,69 @@ import img20 from './assets/20.jpg?magic=cucoloris'
 
 function App() {
 
-  const lqip: string[] = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-  ]
+	const lqip: string[] = [
+		img1,
+		img2,
+		img3,
+		img4,
+		img5,
+	]
 
-  const sqip: string[] = [
-    img6,
-    img7,
-    img8,
-    img9,
-    img10
-  ]
+	const sqip: string[] = [
+		img6,
+		img7,
+		img8,
+		img9,
+		img10
+	]
 
-  const draw: string[] = [
-    img11,
-    img12,
-    img13,
-    img14,
-    img15
-  ]
+	const draw: string[] = [
+		img11,
+		img12,
+		img13,
+		img14,
+		img15
+	]
 
-  const cucoloris: string[] = [
-    img16,
-    img17,
-    img18,
-    img19,
-    img20
-  ]
+	const cucoloris: string[] = [
+		img16,
+		img17,
+		img18,
+		img19,
+		img20
+	]
 
-  const imgMap = new Map<string, string[]>([
-    ['lqip', lqip],
-    ['sqip', sqip],
-    ['cucoloris', cucoloris],
-    ['draw', draw],
-  ])
+	const imgMap = new Map<string, string[]>([
+		['lqip', lqip],
+		['sqip', sqip],
+		['cucoloris', cucoloris],
+		['draw', draw],
+	])
 
-  return (
-    <div className="App">
-      <h1>magic-img</h1>
-      <div className='header'>
-        <a href="https://github.com/lishaobos/magic-img" target='_blank'>github</a>，
-        <a href="https://juejin.cn/post/7122256732940107813" target='_blank'>掘金</a>，
-        <a href="https://www.npmjs.com/package/magic-img" target='_blank'>npm</a>，
-        <a href="https://github.com/lishaobos/magic-img/tree/main/example" target='_blank'>示例代码</a>
-      </div>
-      {Array.from(imgMap.entries()).map(([key, list]) => {
-        return (
-          <div key={key}>
-            <h2>{key.toUpperCase()}</h2>
-            {list.map((src, index) => (
-              <div key={key + index}>
-                <magic-img className={'magic'} src={src} />
-              </div>
-            ))}
-          </div>
-        )
-      })}
+	return (
+		<div className="App">
+			<h1>magic-img</h1>
+			<div className='header'>
+				<a href="https://github.com/lishaobos/magic-img" target='_blank'>github</a>，
+				<a href="https://juejin.cn/post/7122256732940107813" target='_blank'>掘金</a>，
+				<a href="https://www.npmjs.com/package/magic-img" target='_blank'>npm</a>，
+				<a href="https://github.com/lishaobos/magic-img/tree/main/example" target='_blank'>示例代码</a>
+			</div>
+			{Array.from(imgMap.entries()).map(([key, list]) => {
+				return (
+					<div key={key}>
+						<h2>{key.toUpperCase()}</h2>
+						{list.map((src, index) => (
+							<div key={key + index}>
+								<magic-img className={'magic'} src={src} />
+							</div>
+						))}
+					</div>
+				)
+			})}
       
-    </div>
-  )
+		</div>
+	)
 }
 
 export default App
