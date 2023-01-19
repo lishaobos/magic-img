@@ -13,14 +13,14 @@ type Magic = {
 declare function install(): void;
 
 declare global {
-    interface HTMLElementTagNameMap {
-        "magic-img": HTMLDivElement & Partial<Magic>
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "magic-img": DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<Magic>;
-        }
-    }
+	interface HTMLElementTagNameMap {
+		"magic-img": HTMLDivElement & Partial<Magic>
+	}
+	namespace JSX {
+		interface IntrinsicElements {
+			"magic-img": DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & Partial<Magic>;
+		}
+	}
 }
 
 export { install as default };
