@@ -1,6 +1,6 @@
-export { install as  default } from './magic'
+export { install as default } from './magic'
 import type { Magic } from './magic'
-import type { DetailedHTMLProps, HTMLAttributes, } from 'react'
+import type { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 declare global {
     interface HTMLElementTagNameMap {
