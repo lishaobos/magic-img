@@ -81,7 +81,7 @@ function App() {
 						<h2>{key.toUpperCase()}</h2>
 						{list.map((src, index) => (
 							<div key={key + index}>
-								<magic-img className={'magic'} src={src} />
+								<magic-img class={'magic'} src={src} />
 							</div>
 						))}
 					</div>
