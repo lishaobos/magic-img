@@ -6,7 +6,8 @@ import magicImg from 'magic-img/vite'
 export default defineConfig({
 	base: '/magic-img',
 	plugins: [
-		magicImg(),
+		magicImg({
+		}),
 		react()
 	]
 })

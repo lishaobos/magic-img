@@ -1,16 +1,16 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 type Magic = {
-    initial: boolean;
-    width: number;
-    height: number;
-    src: string;
-    content: string;
-    svg: SVGSVGElement;
-    img: HTMLImageElement;
-    smallImg: HTMLImageElement;
-};
-declare function install(): void;
+	initial: boolean;
+	width: number;
+	height: number;
+	src: string;
+	content: string;
+	svg: SVGSVGElement;
+	img: HTMLImageElement;
+	smallImg: HTMLImageElement;
+}
+declare function install(): void
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,4 +23,4 @@ declare global {
 	}
 }
 
-export { install as default };
+export { install as default }
