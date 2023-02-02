@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "magic-img": "workspace:0.0.14",
+    "magic-img": "workspace:0.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
