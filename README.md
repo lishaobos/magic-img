@@ -53,11 +53,24 @@ installMagicImg()
 import img from './home.png?magic=lqip'
 ```
 
+#### Vite
 ```js
 // vite.config.js
 import magicImg from 'magic-img/vite';
 
 export default {
+  plugins: [
+    magicImg(/* options */)
+  ]
+}
+```
+
+#### Webpack
+```js
+// webpack.config.js
+const magicImg = require('magic-img/webpack').default;
+
+module.exports = {
   plugins: [
     magicImg(/* options */)
   ]
