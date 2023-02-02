@@ -32,6 +32,11 @@
       "require": "./dist/vite.js",
       "import": "./dist/vite.mjs"
     },
+    "./webpack": {
+      "types": "./dist/webpack.d.ts",
+      "require": "./dist/webpack.js",
+      "import": "./dist/webpack.mjs"
+    },
     "./css": "./dist/index.css"
   },
   "keywords": [
@@ -59,6 +64,7 @@
     "potrace": "^2.1.8",
     "sqip": "^0.3.3",
     "tsup": "^6.5.0",
+    "unplugin": "^1.0.1",
     "webp-converter": "^2.3.3"
   }
 }

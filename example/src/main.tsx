@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import installMagicImg from 'magic-img'
 import App from './App'
 import './index.css'
-import 'magic-img/css'
+import 'magic-img/dist/index.css'
 
 installMagicImg()
 
