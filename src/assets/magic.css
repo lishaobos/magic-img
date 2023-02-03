@@ -28,6 +28,11 @@ magic-img {
   transition: all 0.5s;
 }
 
+.magic-placeholder[status=noPrevice] {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .magic-placeholder[status=from] polyline {
   transition: stroke-dashoffset 2s;
   stroke-dashoffset: 0;
@@ -40,4 +45,8 @@ magic-img {
 .magic-target[status=to] {
   opacity: 1;
   transition: opacity 0.5s;
+}
+
+.magic-target[status=noPrevice] {
+  opacity: 1;
 }

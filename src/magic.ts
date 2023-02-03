@@ -99,17 +99,14 @@ export function install() {
 					this.img.setAttribute('status', 'from')
 					const start = performance.now()
 					this.img.onload = () => {
-						const to = () => requestAnimationFrame(() => {
-							this.svg.setAttribute('status', 'to')
-							this.smallImg.setAttribute('status', 'to')
-							this.img.setAttribute('status', 'to')
+						const to = (isPrecive: boolean) => requestAnimationFrame(() => {
+							const status = isPrecive ? 'to' : 'noPrevice'
+							this.svg.setAttribute('status', status)
+							this.smallImg.setAttribute('status', status)
+							this.img.setAttribute('status', status)
 						})
           
-						if (performance.now() - start < 600) {
-							return setTimeout(to, 600 - (performance.now() - start))
-						}
-          
-						to()
+						to(performance.now() - start > 100)
 					}
         
 					this.img.src = data.src

@@ -68,24 +68,22 @@ function install() {
       }
       async start() {
         const { data } = this;
-        requestAnimationFrame(() => {
-          this.svg.setAttribute("status", "from");
-          this.smallImg.setAttribute("status", "from");
-          this.img.setAttribute("status", "from");
-          const start = performance.now();
-          this.img.onload = () => {
-            const to = () => requestAnimationFrame(() => {
-              this.svg.setAttribute("status", "to");
-              this.smallImg.setAttribute("status", "to");
-              this.img.setAttribute("status", "to");
-            });
-            if (performance.now() - start < 600) {
-              return setTimeout(to, 600 - (performance.now() - start));
-            }
-            to();
+        this.svg.setAttribute("status", "from");
+        this.smallImg.setAttribute("status", "from");
+        this.img.setAttribute("status", "from");
+        const start = performance.now();
+        this.img.onload = () => {
+          const to = (isPrecive) => {
+            const status = isPrecive ? "to" : "noPrevice";
+            this.svg.setAttribute("status", status);
+            this.smallImg.setAttribute("status", status);
+            this.img.setAttribute("status", status);
           };
-          this.img.src = data.src;
-        });
+          const duration = performance.now() - start;
+          console.log(duration, "+++");
+          to(duration > 100);
+        };
+        this.img.src = data.src;
       }
       static get observedAttributes() {
         return ["src"];
