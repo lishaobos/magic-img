@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "让你的图片加载更加优雅",
   "homepage": "https://github.com/lishaobos/magic-img#readme",
   "repository": {
@@ -49,6 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@swc/core": "^1.3.32",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.24",
     "@typescript-eslint/eslint-plugin": "^5.44.0",

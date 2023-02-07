@@ -7,5 +7,6 @@ export default defineConfig({
 		webpack: './src/webpack.ts',
 	},
 	format: ['cjs', 'esm'],
-	dts: true
+	dts: true,
+	target: 'es5'
 })

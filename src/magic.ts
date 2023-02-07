@@ -79,14 +79,14 @@ export function install() {
 					this.smallImg.src = data.content
 					this.smallImg.setAttribute('width', data.width)
 					this.smallImg.setAttribute('height', data.height)
-					this.svg.parentNode?.removeChild(this.svg)
+					this.svg.parentNode && this.svg.parentNode.removeChild(this.svg)
 					this.appendChild(this.smallImg)
 				} else {
 					this.svg.setAttribute('width', data.width)
 					this.svg.setAttribute('height', data.height)
 					this.svg.setAttribute('viewBox', `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`)
 					this.svg.innerHTML = data.content
-					this.smallImg.parentNode?.removeChild(this.smallImg)
+					this.smallImg.parentNode && this.smallImg.parentNode.removeChild(this.smallImg)
 					this.appendChild(this.svg)
 				}
 			}

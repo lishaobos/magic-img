@@ -1,18 +1,22 @@
+import {
+  __publicField
+} from "./chunk-NHABU752.mjs";
+
 // src/magic.ts
 var wait = (time = 0) => new Promise((r) => setTimeout(r, time));
 function install() {
   try {
     class MagicImg extends HTMLElement {
-      initial = false;
-      width = 0;
-      height = 0;
-      src = "";
-      content = "";
-      svg;
-      img;
-      smallImg;
       constructor() {
         super();
+        __publicField(this, "initial", false);
+        __publicField(this, "width", 0);
+        __publicField(this, "height", 0);
+        __publicField(this, "src", "");
+        __publicField(this, "content", "");
+        __publicField(this, "svg");
+        __publicField(this, "img");
+        __publicField(this, "smallImg");
         this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         this.svg.setAttribute("preserveAspectRatio", "none");
         this.img = new Image();
@@ -55,35 +59,35 @@ function install() {
           this.smallImg.src = data.content;
           this.smallImg.setAttribute("width", data.width);
           this.smallImg.setAttribute("height", data.height);
-          this.svg.parentNode?.removeChild(this.svg);
+          this.svg.parentNode && this.svg.parentNode.removeChild(this.svg);
           this.appendChild(this.smallImg);
         } else {
           this.svg.setAttribute("width", data.width);
           this.svg.setAttribute("height", data.height);
           this.svg.setAttribute("viewBox", `0 0 ${data.width_ || data.width} ${data.height_ || data.height}`);
           this.svg.innerHTML = data.content;
-          this.smallImg.parentNode?.removeChild(this.smallImg);
+          this.smallImg.parentNode && this.smallImg.parentNode.removeChild(this.smallImg);
           this.appendChild(this.svg);
         }
       }
       async start() {
         const { data } = this;
-        this.svg.setAttribute("status", "from");
-        this.smallImg.setAttribute("status", "from");
-        this.img.setAttribute("status", "from");
-        const start = performance.now();
-        this.img.onload = () => {
-          const to = (isPrecive) => {
-            const status = isPrecive ? "to" : "noPrevice";
-            this.svg.setAttribute("status", status);
-            this.smallImg.setAttribute("status", status);
-            this.img.setAttribute("status", status);
+        requestAnimationFrame(() => {
+          this.svg.setAttribute("status", "from");
+          this.smallImg.setAttribute("status", "from");
+          this.img.setAttribute("status", "from");
+          const start = performance.now();
+          this.img.onload = () => {
+            const to = (isPrecive) => requestAnimationFrame(() => {
+              const status = isPrecive ? "to" : "noPrevice";
+              this.svg.setAttribute("status", status);
+              this.smallImg.setAttribute("status", status);
+              this.img.setAttribute("status", status);
+            });
+            to(performance.now() - start > 100);
           };
-          const duration = performance.now() - start;
-          console.log(duration, "+++");
-          to(duration > 100);
-        };
-        this.img.src = data.src;
+          this.img.src = data.src;
+        });
       }
       static get observedAttributes() {
         return ["src"];
