@@ -36,7 +36,7 @@ export function install() {
 			}
   
 			get data(): {
-				magic?: string
+				magic?: 'lqip' | 'sqip' | 'cucoloris' | 'draw'
 				src?: string
 				content?: string
 				width?: string
@@ -128,6 +128,6 @@ export function install() {
   
 		customElements.define('magic-img', MagicImg)
 	} catch {
-		console.log('is not in browser env, skip magic-img setup.')
+		// console.log('is not in browser env, skip magic-img setup.')
 	}
 }
