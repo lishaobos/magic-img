@@ -33,7 +33,12 @@
 npm install magic-img
 ```
 
-## 使用
+---
+## 使用方式
+
+### Web Component
+
+使用 Web Component 好处是无技术栈限制，缺点是 ssr 不友好。
 
 ```js
 // main.js
@@ -42,6 +47,7 @@ import 'magic-img/css'
 
 installMagicImg()
 ```
+
 
 ```js
 // vue
@@ -52,6 +58,33 @@ installMagicImg()
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
 ```
+
+---
+
+### SSR
+
+针对 SSR 需求，有以下框架集成（持续增加中。。。）
+
+##### Vue2，3
+
+```js
+import MagicImage from 'magic-img/vue2'
+// import MagicImage from 'magic-img/vue3' // vue3
+
+Vue.use(MagicImage)
+```
+
+```js
+// vue
+<magicImage :src='img'>
+// react
+<magicImage src={ img }>
+
+// magic = lqip|sqip|cucoloris|draw
+import img from './home.png?magic=lqip'
+```
+---
+
 
 #### Vite
 ```js
