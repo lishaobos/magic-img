@@ -1,6 +1,6 @@
 {
   "name": "magic-img",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "让你的图片加载更加优雅",
   "homepage": "https://github.com/lishaobos/magic-img#readme",
   "repository": {
@@ -13,7 +13,8 @@
     "build": "tsup && node ./build",
     "build:all": "pnpm build && pnpm build:example",
     "build:example": "pnpm -r --filter=./example build",
-    "pub": "bump && pnpm publish"
+    "release": "bump --commit \"fix: version\" --push --tag",
+    "pub": "pnpm release && pnpm publish"
   },
   "files": [
     "./dist",
