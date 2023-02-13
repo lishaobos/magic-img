@@ -1,4 +1,4 @@
-import MagicImage from './MagicImage.vue'
+import MagicImage from './MagicImg.vue'
 
 MagicImage.install = Vue => Vue.component(MagicImage.name, MagicImage)
 

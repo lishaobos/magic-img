@@ -54,6 +54,7 @@ installMagicImg()
 <magic-img :src='img'>
 // react
 <magic-img src={ img }>
+// ... 其他技术栈
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
@@ -66,14 +67,14 @@ import img from './home.png?magic=lqip'
 ### Vue2，3
 
 ```js
-import MagicImage from 'magic-img/vue2'
-// import MagicImage from 'magic-img/vue3' // vue3
+import MagicImg from 'magic-img/vue2'
+// import MagicImg from 'magic-img/vue3' // vue3
 
-Vue.use(MagicImage)
+Vue.use(MagicImg)
 ```
 
 ```js
-<magicImage :src='img'>
+<magic-img :src='img'>
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'

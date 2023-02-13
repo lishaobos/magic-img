@@ -30,7 +30,7 @@
 
 <script>
 export default {
-	name: 'MagicImage',
+	name: 'MagicImg',
 	props: {
 		src: {
 			required: true,
