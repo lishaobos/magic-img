@@ -6,6 +6,6 @@
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "allowJs": true
+    "allowJs": true,
   }
 }

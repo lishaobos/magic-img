@@ -9,8 +9,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint . --fix --ignore-path .gitignore",
-    "build": "tsup",
+    "lint": "eslint . --fix",
+    "build": "tsup && node ./build",
     "build:all": "pnpm build && pnpm build:example",
     "build:example": "pnpm -r --filter=./example build"
   },

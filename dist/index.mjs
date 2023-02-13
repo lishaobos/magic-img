@@ -102,7 +102,6 @@ function install() {
     }
     customElements.define("magic-img", MagicImg);
   } catch {
-    console.log("is not in browser env, skip magic-img setup.");
   }
 }
 
