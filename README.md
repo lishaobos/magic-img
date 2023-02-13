@@ -61,11 +61,9 @@ import img from './home.png?magic=lqip'
 
 ---
 
-### SSR
+针对 SSR 需求，可以不使用 web components，有以下框架集成（持续增加中。。。）。
 
-针对 SSR 需求，有以下框架集成（持续增加中。。。）
-
-##### Vue2，3
+### Vue2，3
 
 ```js
 import MagicImage from 'magic-img/vue2'
@@ -75,10 +73,7 @@ Vue.use(MagicImage)
 ```
 
 ```js
-// vue
 <magicImage :src='img'>
-// react
-<magicImage src={ img }>
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
