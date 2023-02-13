@@ -33,7 +33,6 @@
 npm install magic-img
 ```
 
----
 ## 使用方式
 
 ### Web Component
@@ -64,7 +63,7 @@ import img from './home.png?magic=lqip'
 
 针对 SSR 需求，可以不使用 web components，有以下框架集成（持续增加中。。。）。
 
-### Vue2，3
+### Vue2.7+，3
 
 ```js
 import MagicImg from 'magic-img/vue2'
@@ -82,7 +81,7 @@ import img from './home.png?magic=lqip'
 ---
 
 
-#### Vite
+### Vite
 ```js
 // vite.config.js
 import magicImg from 'magic-img/vite';
@@ -94,7 +93,7 @@ export default {
 }
 ```
 
-#### Webpack
+### Webpack
 ```js
 // webpack.config.js
 const magicImg = require('magic-img/webpack').default;
