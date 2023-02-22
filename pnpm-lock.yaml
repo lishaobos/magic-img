@@ -12,6 +12,7 @@ importers:
       '@types/react': ^18.0.24
       '@typescript-eslint/eslint-plugin': ^5.44.0
       '@typescript-eslint/parser': ^5.44.0
+      '@vitejs/plugin-react': ^2.2.0
       '@vitejs/plugin-vue': '3'
       '@vitejs/plugin-vue2': ^2.2.0
       eslint: ^8.28.0
@@ -19,6 +20,7 @@ importers:
       jimp: ^0.16.2
       lqip: ^2.1.0
       potrace: ^2.1.8
+      react: ^18.2.0
       sqip: ^0.3.3
       tsup: ^6.5.0
       typescript: ^4.9.3
@@ -44,10 +46,12 @@ importers:
       '@types/react': 18.0.26
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
       '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
+      '@vitejs/plugin-react': 2.2.0_vite@4.1.1
       '@vitejs/plugin-vue': 3.2.0_vite@4.1.1+vue@3.2.47
       '@vitejs/plugin-vue2': 2.2.0_vite@4.1.1+vue@3.2.47
       eslint: 8.29.0
       husky: 8.0.3
+      react: 18.2.0
       typescript: 4.9.3
       vite: 4.1.1_@types+node@18.11.11
       vue: 3.2.47
@@ -1927,6 +1931,24 @@ packages:
       - supports-color
     dev: true
 
+  /@vitejs/plugin-react/2.2.0_vite@4.1.1:
+    resolution: {integrity: sha512-FFpefhvExd1toVRlokZgxgy2JtnBOdp4ZDsq7ldCWaqGSGn9UhWMAVm/1lxPL14JfNS5yGz+s9yFrQY6shoStA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^3.0.0
+    dependencies:
+      '@babel/core': 7.20.5
+      '@babel/plugin-transform-react-jsx': 7.19.0_@babel+core@7.20.5
+      '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.20.5
+      '@babel/plugin-transform-react-jsx-self': 7.18.6_@babel+core@7.20.5
+      '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.20.5
+      magic-string: 0.26.7
+      react-refresh: 0.14.0
+      vite: 4.1.1_@types+node@18.11.11
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@vitejs/plugin-vue/3.2.0_vite@4.1.1+vue@3.2.47:
     resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -3781,7 +3803,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lqip/2.1.0:
     resolution: {integrity: sha512-cnQw+89wUk+GSyeaaUuqeJl0XwpCQDcgXZPDBNnExdnCeVdFIrIVI29tae9GmC09LYgPY0IJZjixG6sdn7IYsQ==}
@@ -4273,7 +4294,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-chunk/1.0.1:
     resolution: {integrity: sha512-5NLTTdX45dKFtG8CX5pKmvS9V5u9wBE+gkklN7xhDuhq3pA2I4O7ALfKxosCMcLHOhkxj6GNacZhfXtp5nlCdg==}

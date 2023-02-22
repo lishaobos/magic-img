@@ -1,5 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+// import installMagicImg from 'magic-img'
+// installMagicImg()
+import MagicImg from 'magic-img/react'
+import 'magic-img/css'
+
 import './App.css'
 import img1 from './assets/1.jpg?magic=lqip'
 import img2 from './assets/2.jpg?magic=lqip'
@@ -75,18 +80,21 @@ function App() {
 				<a href="https://www.npmjs.com/package/magic-img" target='_blank'>npm</a>，
 				<a href="https://github.com/lishaobos/magic-img/tree/main/example" target='_blank'>示例代码</a>
 			</div>
-			{Array.from(imgMap.entries()).map(([key, list]) => {
-				return (
-					<div key={key}>
-						<h2>{key.toUpperCase()}</h2>
-						{list.map((src, index) => (
-							<div key={key + index}>
-								<magic-img class={'magic'} src={src} />
-							</div>
-						))}
-					</div>
-				)
-			})}
+			{
+				Array.from(imgMap.entries()).map(([key, list]) => {
+					return (
+						<div key={key}>
+							<h2>{key.toUpperCase()}</h2>
+							{list.map((src, index) => (
+								<div key={key + index}>
+									{/* <magic-img class={'magic'} src={src} /> */}
+									<MagicImg className={'magic'} src={src}  />
+								</div>
+							))}
+						</div>
+					)
+				})
+			}
       
 		</div>
 	)

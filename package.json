@@ -47,6 +47,11 @@
       "require": "./dist/vue3.umd.js",
       "import": "./dist/vue3.mjs"
     },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "require": "./dist/react.js",
+      "import": "./dist/react.mjs"
+    },
     "./css": "./dist/index.css"
   },
   "keywords": [
@@ -65,10 +70,12 @@
     "@types/react": "^18.0.24",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
+    "@vitejs/plugin-react": "^2.2.0",
     "@vitejs/plugin-vue": "3",
     "@vitejs/plugin-vue2": "^2.2.0",
     "eslint": "^8.28.0",
     "husky": "^8.0.3",
+    "react": "^18.2.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.1",
     "vue": "^3.2.47",
