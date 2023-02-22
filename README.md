@@ -66,6 +66,7 @@ import img from './home.png?magic=lqip'
 ### Vue2.7+，3
 
 ```js
+import 'magic-img/css'
 import MagicImg from 'magic-img/vue2'
 // import MagicImg from 'magic-img/vue3' // vue3
 
@@ -73,7 +74,22 @@ Vue.use(MagicImg)
 ```
 
 ```js
-<magic-img :src='img'>
+<MagicImg :src='img' />
+
+// magic = lqip|sqip|cucoloris|draw
+import img from './home.png?magic=lqip'
+```
+---
+
+### React >= 16.18
+
+```js
+import 'magic-img/css'
+import MagicImg from 'magic-img/react'
+```
+
+```js
+<MagicImg src={img} />
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
