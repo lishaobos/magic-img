@@ -81,6 +81,8 @@ Vue.use(MagicImg)
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
+// 可拼接参数
+import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 ---
 
@@ -96,6 +98,8 @@ import MagicImg from 'magic-img/react'
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
+// 可拼接参数
+import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 ---
 
