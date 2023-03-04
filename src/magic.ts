@@ -11,6 +11,8 @@ export type Magic = {
 	smallImg: HTMLImageElement
 }
 
+export const imgPlaceholder = ['lqip', 'blurhash']
+
 export function install() {
 	try {
 		class MagicImg extends HTMLElement implements Magic {
@@ -75,7 +77,7 @@ export function install() {
 				const { data } = this
 				this.setAttribute('magic', data.magic)
 				this.img.removeAttribute('status')
-				if (data.magic === 'lqip') {
+				if (imgPlaceholder.includes(data.magic)) {
 					this.smallImg.src = data.content
 					this.smallImg.setAttribute('width', data.width)
 					this.smallImg.setAttribute('height', data.height)

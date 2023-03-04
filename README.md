@@ -18,6 +18,7 @@
 - 无框架限制 - 基于 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - 懒加载 - 基于 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
 - 模式
+  - Blurhash - 模糊算法生成占位图
   - Lqip - 以缩略 base64 图为过渡
   - Sqip - 以 svg 轮廓为过渡，可自定义轮廓，滤镜
   - Cucoloris - 以剪影为过渡，可自定义颜色，背景色
@@ -57,6 +58,8 @@ installMagicImg()
 
 // magic = lqip|sqip|cucoloris|draw
 import img from './home.png?magic=lqip'
+// 可拼接参数
+import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 
 ---
@@ -123,29 +126,39 @@ module.exports = {
 
 ## Options
 
+- blurhash
+  - w (number) - 缩略图宽度(指的是压缩的宽度值，不是实际展示)
+    (default: 20)
+  - h (number) - 缩略图高度
+  - componentX (number)
+    (default: 4)
+  - componentY (number)
+    (default: 4)
+  - punch (number) - 对比度
+  - hash (string) - 自定义 hash，默认取自图片
 - lqip
-  - w - 缩略图宽度
+  - w (number) - 缩略图宽度
     (default: 20)
-  - h - 缩略图高度
+  - h (number) - 缩略图高度
 - sqip
-  - numberOfPrimitives - 生成的轮廓数量
+  - numberOfPrimitives (number) - 生成的轮廓数量
     (default: 20)
-  - blur - 滤镜
+  - blur (number) - 滤镜
     (default: 2)
-  - mode - 轮廓模式
+  - mode (number) - 轮廓模式
     (default: 0)
     0=combo, 1=triangle, 2=rect, 3=ellipse, 4=circle, 5=rotatedrect, 6=beziers, 7=rotatedellipse, 8=polygon
 - cucoloris
-  - background - 背景色
+  - background (string) - 背景色
     (default: '#fff')
-  - color - c7d4d8
+  - color (string) - c7d4d8
     (default: '#c7d4d8')
-  - threshold - 阈值
+  - threshold (number) - 阈值
     (default: 120)
 - draw
-  - w - 缩略图宽度
+  - w (number) - 缩略图宽度
     (default: 400)
-  - h - 缩略图高度
+  - h (number) - 缩略图高度
 
 
 ## 自定义 Options
@@ -166,13 +179,6 @@ export default {
     })
   ]
 }
-```
-
-#### 局部定义
-
-```js
-// 可针对不同图片自定义转换模式
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 
 ## 自定义过渡

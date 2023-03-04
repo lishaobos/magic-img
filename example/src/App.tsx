@@ -10,34 +10,37 @@ import img1 from './assets/1.jpg?magic=lqip'
 import img2 from './assets/2.jpg?magic=lqip'
 import img3 from './assets/3.jpg?magic=lqip'
 import img4 from './assets/4.jpg?magic=lqip'
-import img5 from './assets/5.jpg?magic=lqip'
-
+import img5 from './assets/5.jpg?magic=blurhash'
 import img6 from './assets/6.jpg?magic=sqip&numberOfPrimitives=100&blur=0'
 import img7 from './assets/7.jpg?magic=sqip&numberOfPrimitives=100&blur=0'
 import img8 from './assets/8.jpg?magic=sqip&numberOfPrimitives=100&blur=0'
 import img9 from './assets/9.jpg?magic=sqip&numberOfPrimitives=150'
-import img10 from './assets/10.jpg?magic=sqip&numberOfPrimitives=100&blur=0'
-
+import img10 from './assets/10.jpg?magic=blurhash'
 import img11 from './assets/11.jpg?magic=draw'
 import img12 from './assets/12.jpg?magic=draw'
 import img13 from './assets/13.jpg?magic=draw'
 import img14 from './assets/14.jpg?magic=draw'
-import img15 from './assets/15.jpg?magic=draw'
-
+import img15 from './assets/15.jpg?magic=blurhash'
 import img16 from './assets/16.jpg?magic=cucoloris'
 import img17 from './assets/17.jpg?magic=cucoloris'
 import img18 from './assets/18.jpg?magic=cucoloris'
 import img19 from './assets/19.jpg?magic=cucoloris'
-import img20 from './assets/20.jpg?magic=cucoloris'
+import img20 from './assets/20.jpg?magic=blurhash'
 
 function App() {
+
+	const blurhash: string[] = [
+		img5,
+		img10,
+		img15,
+		img20
+	]
 
 	const lqip: string[] = [
 		img1,
 		img2,
 		img3,
 		img4,
-		img5,
 	]
 
 	const sqip: string[] = [
@@ -45,7 +48,6 @@ function App() {
 		img7,
 		img8,
 		img9,
-		img10
 	]
 
 	const draw: string[] = [
@@ -53,7 +55,6 @@ function App() {
 		img12,
 		img13,
 		img14,
-		img15
 	]
 
 	const cucoloris: string[] = [
@@ -61,10 +62,10 @@ function App() {
 		img17,
 		img18,
 		img19,
-		img20
 	]
 
 	const imgMap = new Map<string, string[]>([
+		['blurhash', blurhash],
 		['lqip', lqip],
 		['sqip', sqip],
 		['cucoloris', cucoloris],

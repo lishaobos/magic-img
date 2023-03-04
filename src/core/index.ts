@@ -3,6 +3,7 @@ import draw from './draw'
 import cucoloris from './cucoloris'
 import lqip from './lqip'
 import sqip from './sqip'
+import blurhash from './blurhash'
 import webp from 'webp-converter'
 import * as path from 'path'
 import { rmSync, mkdirSync } from 'fs'
@@ -29,13 +30,14 @@ export default createUnplugin((options: Options = {}): any => {
 		draw,
 		cucoloris,
 		lqip,
-		sqip
+		sqip,
+		blurhash
 	}
 
 	return {
 		name: 'unplugin-magic-img',
 		transformInclude(id: string) {
-			return includeReg.test(id) && /magic=(draw|cucoloris|lqip|sqip)/.test(id)
+			return includeReg.test(id) && /magic=(draw|cucoloris|lqip|sqip|blurhash)/.test(id)
 		},
 		async transform(code: string, id: string) {
 			if (cacheMap.has(id)) return cacheMap.get(id)

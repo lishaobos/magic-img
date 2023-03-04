@@ -1,7 +1,7 @@
 <template>
 	<div ref='magicImage' magic-img :magic="data.magic">
 		<svg 
-			v-if="data.magic !== 'lqip'"
+			v-if="!imgPlaceholder.includes(data.magic)"
 			class='magic-placeholder'
 			:status="placeholderStatus"
 			preserveAspectRatio='none' 
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { imgPlaceholder } from "../../magic";
+
 export default {
 	name: 'MagicImg',
 	props: {
@@ -49,6 +51,7 @@ export default {
 	},
 	data() {
 		return {
+			imgPlaceholder,
 			placeholderStatus: '',
 			targetStatus: '',
 			realSrc: ''

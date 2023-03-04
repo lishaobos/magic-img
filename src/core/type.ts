@@ -33,6 +33,15 @@ export type LqipOptions = {
 	h?: number,
 }
 
+export type BlurhashOptions = {
+	w: number,
+	h?: number,
+	componentX: number
+	componentY: number
+	punch?: number
+	hash?: string
+}
+
 export type SqipOptions = {
 	numberOfPrimitives: number
 	blur: number

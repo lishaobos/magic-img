@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import type { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { imgPlaceholder } from "../../magic"
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
 	src: string,
@@ -54,7 +55,7 @@ export default function MagicImg ({ src, ...reset }: Props) {
 	return (
 		<div ref={magicImage} magic-img='true' {...{magic: data.magic, ...reset}}>
 			{
-				data.magic !== 'lqip' ?
+				!imgPlaceholder.includes(data.magic) ?
 					<svg 
 						className={'magic-placeholder'}
 						{...{status: placeholderStatus}}
