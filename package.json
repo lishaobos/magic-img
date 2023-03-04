@@ -57,7 +57,12 @@
   "keywords": [
     "img",
     "lazy",
-    "magic-img"
+    "magic-img",
+    "lqip",
+    "sqip",
+    "cucoloris",
+    "draw",
+    "blurhash"
   ],
   "author": "lishaobos",
   "license": "ISC",
