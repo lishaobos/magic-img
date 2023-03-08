@@ -1,12 +1,6 @@
 import jimp from 'jimp'
 import type { LqipOptions } from './type'
-
-const mimeType = {
-	jpeg: "image/jpeg",
-	jpg: "image/jpeg",
-	png: "image/png",
-	gif: "image/gif",
-}
+import { mimeType } from './index'
 
 export default async function (filePath: string, params: LqipOptions) {
 	const { w = 20, h = jimp.AUTO } = params
