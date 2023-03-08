@@ -91,11 +91,11 @@
     "blurhash": "^2.0.5",
     "jimp": "^0.16.2",
     "lqip": "^2.1.0",
-    "node-fetch": "^3.3.0",
+    "node-fetch": "2",
     "potrace": "^2.1.8",
     "sqip": "^0.3.3",
     "tsup": "6.5.0",
-    "unplugin": "^1.0.1",
+    "unplugin": "^1.1.0",
     "upng-js": "^2.1.0",
     "webp-converter": "^2.3.3"
   }
