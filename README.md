@@ -56,7 +56,7 @@ import img from './home.png?magic=lqip'
 import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 
 // 加载远程链接
-import img from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=lqip'
+import img from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?magic=lqip'
 ```
 
 ### Web Component
