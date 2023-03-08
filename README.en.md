@@ -19,12 +19,13 @@ Make img loading more elegant
 
 - no framework limitations - base on [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - lazy load - base on [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+- [support load remote url](#Load_Methods)
 - mode
-  - Blurhash - blurred algorithm generates placeholder image
-  - Lqip - transition based on thumbnail base64 image
-  - Sqip - transition based on SVG outline, with customizable outline and filters
-  - Cucoloris - transition with silhouette, customizable color and background color
-  - Draw - transition with a dynamic brush, customizable brush color
+  - blurhash - blurred algorithm generates placeholder image
+  - lqip - transition based on thumbnail base64 image
+  - sqip - transition based on SVG outline, with customizable outline and filters
+  - cucoloris - transition with silhouette, customizable color and background color
+  - draw - transition with a dynamic brush, customizable brush color
 - support - jpg，jpeg，png，gif，webp
 - [custom duration](#custom duration)
 - integration
@@ -45,6 +46,19 @@ npm install magic-img
 
 ## Useage
 
+### Load_Methods
+
+```js
+// magic = blurhash|lqip|sqip|cucoloris|draw
+import img from './home.png?magic=lqip'
+
+// 可拼接参数
+import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
+
+// 加载远程链接
+import img from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=lqip'
+```
+
 ### Web Component
 
 Web component is good at across framework, but not good at ssr
@@ -57,18 +71,12 @@ import 'magic-img/css'
 installMagicImg()
 ```
 
-
-```js
+```html
 // vue
 <magic-img :src='img'>
 // react
 <magic-img src={ img }>
-// ... other
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// can custom params
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
+// ... 其他技术栈
 ```
 
 ---
@@ -85,13 +93,8 @@ import MagicImg from 'magic-img/vue2'
 Vue.use(MagicImg)
 ```
 
-```js
+```html
 <MagicImg :src='img' />
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// can custom params
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 ---
 
@@ -102,13 +105,8 @@ import 'magic-img/css'
 import MagicImg from 'magic-img/react'
 ```
 
-```js
-<MagicImg src={img} />
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// can custom params
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
+```html
+<MagicImg :src='img' />
 ```
 ---
 

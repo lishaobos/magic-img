@@ -19,12 +19,13 @@
 
 - 无框架限制 - 基于 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - 懒加载 - 基于 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+- [支持加载远程链接](#加载方式)
 - 模式
-  - Blurhash - 模糊算法生成占位图
-  - Lqip - 以缩略 base64 图为过渡
-  - Sqip - 以 svg 轮廓为过渡，可自定义轮廓，滤镜
-  - Cucoloris - 以剪影为过渡，可自定义颜色，背景色
-  - Draw - 以动态画笔为过渡，可自定义画笔颜色
+  - blurhash - 模糊算法生成占位图
+  - lqip - 以缩略 base64 图为过渡
+  - sqip - 以 svg 轮廓为过渡，可自定义轮廓，滤镜
+  - cucoloris - 以剪影为过渡，可自定义颜色，背景色
+  - draw - 以动态画笔为过渡，可自定义画笔颜色
 - 支持 - jpg，jpeg，png，gif，webp
 - [自定义过渡](#自定义过渡)
 - 集成
@@ -45,6 +46,19 @@ npm install magic-img
 
 ## 使用方式
 
+### 加载方式
+
+```js
+// magic = blurhash|lqip|sqip|cucoloris|draw
+import img from './home.png?magic=lqip'
+
+// 可拼接参数
+import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
+
+// 加载远程链接
+import img from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=lqip'
+```
+
 ### Web Component
 
 使用 Web Component 好处是无技术栈限制，缺点是 ssr 不友好。
@@ -58,17 +72,12 @@ installMagicImg()
 ```
 
 
-```js
+```html
 // vue
 <magic-img :src='img'>
 // react
 <magic-img src={ img }>
 // ... 其他技术栈
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// 可拼接参数
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 
 ---
@@ -85,13 +94,8 @@ import MagicImg from 'magic-img/vue2'
 Vue.use(MagicImg)
 ```
 
-```js
+```html
 <MagicImg :src='img' />
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// 可拼接参数
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 ---
 
@@ -102,13 +106,8 @@ import 'magic-img/css'
 import MagicImg from 'magic-img/react'
 ```
 
-```js
+```html
 <MagicImg src={img} />
-
-// magic = lqip|sqip|cucoloris|draw
-import img from './home.png?magic=lqip'
-// 可拼接参数
-import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 ```
 ---
 
