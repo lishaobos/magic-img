@@ -1,6 +1,7 @@
 magic-img, [magic-img] {
   position: relative;
   display: inline-block;
+  overflow: hidden;
 }
 
 .magic-placeholder,.magic-target {
