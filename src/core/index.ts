@@ -27,14 +27,15 @@ try {
 	mkdirSync(outputDir)
 }
 
-export default createUnplugin((options: Options = {}): any => {
+export default createUnplugin((options: Options = {}, meta): any => {
 	webp.grant_permission()
 	const asyncTaskCacheMap = new Map<string, Promise<string>>()
 	const cacheMap = new Map<string, string>()
 	const includeReg = /magic=(draw|cucoloris|lqip|sqip|blurhash)/
 	const magicReg = /([^?]+)\?(.+)/g
-	const magicRemoteReg = /magic-img:(.+)\?(.+)/g
 	const pathReg = /('|")([^'"?]+)/g
+	// const magicRemoteReg = /magic-img@(.+)\?(.+)/g
+	const isRemoteUrl = (path: string) => path.includes('magic-img@')
 	const transformMap = {
 		draw,
 		cucoloris,
@@ -70,46 +71,30 @@ export default createUnplugin((options: Options = {}): any => {
 		return await asyncTaskCacheMap.get(taskId)
 	}
 
-	return {
-		name: 'unplugin-magic-img',
-		resolveId(source: string) {
-			if (!magicRemoteReg.test(source)) return null
-
-			return source
-		},
-		load(id: string) {
-			if (magicRemoteReg.test(id)) {
-				return {
-					code: `export default '${id}'`,
-					moduleSideEffects: false
-				}
-			}
-		},
-		transformInclude(id: string) {
-			return includeReg.test(id)
-		},
-		async transform(code: string, id: string) {
-			if (cacheMap.has(id)) return cacheMap.get(id)
+	async function transform_(code:string, id: string) {
+		// webpack5
+		if (id.includes('virtual_magic-img')) id = decodeURIComponent(id)
+		if (cacheMap.has(id)) return cacheMap.get(id)
 			
-			const isRemote = id.includes('magic-img:')
-			const [[, filePath, params = {}] = []] = Array.from(id.matchAll(isRemote ? magicRemoteReg : magicReg))
-			let convertFilePath = filePath
-			isRemote && (convertFilePath = await getAsyncRes(convertFilePath, () => loadImg(convertFilePath)))
-			convertFilePath = await getAsyncRes(convertFilePath, () => decodeWebp(convertFilePath))
-			const { magic, ...customParams } = Object.fromEntries(new URLSearchParams(params).entries())
-			const { width = 0, height = 0, width_ = 0, height_ = 0, content } = await transformMap[magic](convertFilePath, { ...options[magic], ...customParams })
-			const [match] = Array.from(code.matchAll(pathReg))
+		const isRemote = isRemoteUrl(id)
+		const [[, filePath, params = {}] = []] = Array.from(id.matchAll(isRemote ? /magic-img@(.+)\?(.+)/g : magicReg))
+		let convertFilePath = filePath
+		isRemote && (convertFilePath = await getAsyncRes(convertFilePath, () => loadImg(convertFilePath)))
+		convertFilePath = await getAsyncRes(convertFilePath, () => decodeWebp(convertFilePath))
+		const { magic, ...customParams } = Object.fromEntries(new URLSearchParams(params).entries())
+		const { width = 0, height = 0, width_ = 0, height_ = 0, content } = await transformMap[magic](convertFilePath, { ...options[magic], ...customParams })
+		const [match] = Array.from(code.matchAll(pathReg))
 
-			let str = 'const src = '
-			if (isRemote) {
-				str += `"${filePath}"`
-			} else if (code.includes('__webpack_public_path__')) {
-				str += `__webpack_public_path__ + "${match[2]}"`
-			} else {
-				str += `"${match[2].endsWith('$_') ? match[2].slice(0, match[2].length - 2) : match[2]}"`
-			}
+		let str = 'const src = '
+		if (isRemote) {
+			str += `"${filePath}"`
+		} else if (code.includes('__webpack_public_path__')) {
+			str += `__webpack_public_path__ + "${match[2]}"`
+		} else {
+			str += `"${match[2].endsWith('$_') ? match[2].slice(0, match[2].length - 2) : match[2]}"`
+		}
 
-			cacheMap.set(id, `
+		cacheMap.set(id, `
       ${str}
       export default JSON.stringify({
         src,
@@ -121,7 +106,29 @@ export default createUnplugin((options: Options = {}): any => {
         content: '${content}',
       })`)
 
-			return cacheMap.get(id)
-		}
+		return cacheMap.get(id)
+	}
+
+	return {
+		name: 'unplugin-magic-img',
+		// vite webpack 远程解析入口
+		resolveId(source: string) {
+			if (!isRemoteUrl(source)) return null
+
+			return source
+		},
+		loadInclude(id: string) {
+			return isRemoteUrl(id) && meta.framework === 'webpack'
+		},
+		async load(id: string) {
+			return {
+				code: await transform_('', id),
+				moduleSideEffects: false
+			}
+		},
+		transformInclude(id: string) {
+			return includeReg.test(id)
+		},
+		transform: transform_
 	}
 })

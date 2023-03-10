@@ -7,8 +7,8 @@ import 'magic-img/css'
 
 
 import './App.css'
-// import img1 from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=lqip'
-import img1 from './assets/1.jpg?magic=lqip'
+import img1 from 'magic-img@https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=lqip'
+// import img1 from './assets/1.jpg?magic=lqip'
 import img2 from './assets/2.jpg?magic=lqip'
 import img3 from './assets/3.jpg?magic=lqip'
 import img4 from './assets/4.jpg?magic=lqip'

@@ -95,7 +95,7 @@
     "potrace": "^2.1.8",
     "sqip": "^0.3.3",
     "tsup": "6.5.0",
-    "unplugin": "^1.1.0",
+    "unplugin": "1.0.0",
     "upng-js": "^2.1.0",
     "webp-converter": "^2.3.3"
   }
