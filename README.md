@@ -56,7 +56,7 @@ import img from './home.png?magic=lqip'
 import img from './home.png?magic=sqip&numberOfPrimitives=100&blur=0'
 
 // 加载远程链接
-import img from 'magic-img:https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?magic=lqip'
+import img from 'magic-img@https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?magic=lqip'
 ```
 
 ### Web Component
@@ -281,5 +281,23 @@ module.exports = {
         }
       }))
   }
+}
+```
+
+## 常见问题
+
+#### vue-cli webpack5 项目打包失败
+
+```js
+// 与 vue-cli loader 配置冲突，需要处理
+chainWebpack(config) {
+    config.module.rule('images').clear()
+    config.module.rule('magic-img')
+    .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+    .use('file-loader')
+    .loader('file-loader')
+    .options({
+      'name': 'img/[name].[hash:8][ext]'
+    })
 }
 ```
