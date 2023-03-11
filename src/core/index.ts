@@ -115,10 +115,10 @@ export default createUnplugin((options: Options = {}, meta): any => {
 		resolveId(source: string) {
 			if (!isRemoteUrl(source)) return null
 
-			return source
+			return '\0' + source
 		},
 		loadInclude(id: string) {
-			return isRemoteUrl(id) && meta.framework === 'webpack'
+			return isRemoteUrl(id)
 		},
 		async load(id: string) {
 			return {
