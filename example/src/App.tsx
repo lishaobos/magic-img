@@ -7,7 +7,7 @@ import 'magic-img/css'
 
 
 import './App.css'
-import img1 from 'magic-img@https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989__480.jpg?time=123&magic=blurhash'
+import img1 from 'magic-img@https://img0.baidu.com/it/u=4017997553,107592496&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800&magic=blurhash'
 // import img1 from './assets/1.jpg?magic=blurhash'
 import img2 from './assets/2.jpg?magic=blurhash'
 import img3 from './assets/3.jpg?magic=blurhash'
